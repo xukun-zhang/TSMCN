@@ -18,3 +18,7 @@ TSMCN aims to improve the accuracy and efficiency of liver surface segmentation 
 - We are in the process of creating a detailed tutorial that will guide users through the process of annotating mesh edge labels using software like MeshLab and Blender.
 - The tutorial will cover how to save annotations in the eSeg format, which is compatible with both MeshCNN and our proposed TSMCN model for mesh segmentation tasks.
 
+
+## Other implementations
+
+- This project is built upon the [MeshCNN](https://github.com/ranahanocka/MeshCNN) framework, which is a general-purpose deep neural network for 3D triangular meshes. We extend our sincere thanks to the creators of MeshCNN for their valuable contribution to the field.
