@@ -34,7 +34,16 @@ TSMCN addresses the challenges of liver surface segmentation by leveraging a dua
      TSMCN/PyTorch3D-3D-2D Reg/
      ```
 
-6. **Training and Testing Commands**:
+6. **Metrics**:
+   - Includes implementation for commonly used evaluation metrics:
+     - **Dice Score**: Measures overlap between predicted and ground truth labels.
+     - **Chamfer Distance**: Computes the distance between predicted and ground truth points.
+
+7. **Visualization**:
+   - Scripts for visualizing segmentation results and annotations are provided, enabling users to analyze and compare results effectively.
+   - Examples include 3D mesh visualizations, overlaying segmentation outputs on liver meshes, and highlighting key anatomical landmarks.
+
+8. **Training and Testing Commands**:
    - Train: `python train.py`
    - Test: `python test.py`
 
@@ -87,6 +96,7 @@ The final directory structure should appear as:
    ├── 📂 seg            # Edge annotations
    ├── 📂 edges          # Edge-vertex relationship files
    └── 📂 sseg           # Edge soft labels
+
 ```
 
 
