@@ -87,7 +87,7 @@ The final directory structure should appear as:
    ├── 📂 seg            # Edge annotations
    ├── 📂 edges          # Edge-vertex relationship files
    └── 📂 sseg           # Edge soft labels
-
+```
 
 
 ## Other implementations
