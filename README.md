@@ -1,22 +1,93 @@
 # TSMCN: Two-stream MeshCNN for Key Anatomical Segmentation on the Liver Surface
 
-TSMCN is a novel deep learning framework designed for key anatomical segmentation on the liver surface using 3D triangular meshes. This project leverages the power of MeshCNN and extends it to a two-stream architecture for enhanced segmentation capabilities.
+TSMCN is a novel deep learning framework designed for key anatomical segmentation on the liver surface using 3D triangular meshes. This project extends the MeshCNN framework into a two-stream architecture, enabling more precise segmentation of key anatomical landmarks on liver meshes.
+
+---
 
 ## Overview
 
-TSMCN aims to improve the accuracy and efficiency of liver surface segmentation by employing a dual-stream approach. The main code, datasets, and pre-trained models have been uploaded to facilitate replication of our results. We are currently working on refining the code structure for easier reproduction and will provide a comprehensive tutorial soon.
+TSMCN addresses the challenges of liver surface segmentation by leveraging a dual-stream approach that processes both mesh structure and feature relationships. The framework integrates edge annotations and vertex relationships to improve segmentation accuracy. We provide the core code, datasets, pre-trained models, and downstream task support to facilitate comprehensive research and application.
 
-## Getting Started
+---
 
-### Code and Data
+## Features
 
-- The core codebase and data required to run TSMCN are now available.
-- Pre-trained models are included to help users quickly start experimenting with the framework.
+1. **Two-Stream Architecture**:
+   - Extends MeshCNN to a dual-stream architecture, enhancing segmentation performance by addressing feature entanglement.
 
-### Upcoming Tutorial
+2. **Pre-Trained Models**:
+   - Models trained for anatomical segmentation are available under the `TSMCN/checkpoints/debug` directory.
 
-- We are in the process of creating a detailed tutorial that will guide users through the process of annotating mesh edge labels using software like MeshLab and Blender.
-- The tutorial will cover how to save annotations in the eSeg format, which is compatible with both MeshCNN and our proposed TSMCN model for mesh segmentation tasks.
+3. **Dataset Management**:
+   - Liver mesh `.obj` files: `TSMCN/all_obj`.
+   - Edge annotations: `TSMCN/seg`.
+
+4. **Annotation Guide**:
+   - Detailed documentation and scripts for constructing liver meshes and annotating edges are provided in:
+     ```plaintext
+     TSMCN/dataset-annotation-guide/
+     ```
+
+5. **Downstream Tasks**:
+   - Core code for 3D-2D registration based on PyTorch3D, along with input examples, is available in:
+     ```plaintext
+     TSMCN/PyTorch3D-3D-2D Reg/
+     ```
+
+6. **Training and Testing Commands**:
+   - Train: `python train.py`
+   - Test: `python test.py`
+
+---
+
+## Environment Setup
+
+To set up the environment, refer to the [MeshCNN repository](https://github.com/ranahanocka/MeshCNN). Ensure all dependencies specified in the MeshCNN documentation are installed before running this project.
+
+---
+
+## Data Organization
+
+Please organize the dataset files as follows:
+
+1. **Split Liver Mesh Files**:
+   - Randomly divide the `.obj` files in `TSMCN/all_obj` into `train`, `val`, and `real_test` subsets.
+   - Move the split files to:
+     ```plaintext
+     TSMCN/datasets/All_data/train
+     TSMCN/datasets/All_data/val
+     TSMCN/datasets/All_data/real_test
+     ```
+
+2. **Move Edge Annotations**:
+   - Move edge annotation files from `TSMCN/seg` to:
+     ```plaintext
+     TSMCN/datasets/All_data/seg
+     ```
+
+3. **Move Edge-Vertex Relationship Files**:
+   - Move files mapping edges to vertex indices from `TSMCN/edges` to:
+     ```plaintext
+     TSMCN/datasets/All_data/edges
+     ```
+
+4. **Move Edge Soft Labels**:
+   - Move edge soft label files from `TSMCN/sseg` to:
+     ```plaintext
+     TSMCN/datasets/All_data/sseg
+     ```
+
+The final directory structure should appear as:
+
+```plaintext
+📂 TSMCN/datasets/All_data
+   ├── 📂 train          # Liver mesh files for training
+   ├── 📂 val            # Liver mesh files for validation
+   ├── 📂 real_test      # Liver mesh files for testing
+   ├── 📂 seg            # Edge annotations
+   ├── 📂 edges          # Edge-vertex relationship files
+   └── 📂 sseg           # Edge soft labels
+
 
 
 ## Other implementations
